@@ -5,6 +5,11 @@ import json
 
 from collections import ChainMap
 
+def removeCSVs():
+    filelist = [f for f in os.listdir('./') if f.endswith(".csv")]
+    for f in filelist:
+        os.remove(os.path.join('./', f))
+
 
 def mergeListOfDicts(listOfDicts):
     return [dict(ChainMap(*listOfDicts))]

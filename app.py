@@ -1,14 +1,11 @@
 import datetime
 from aiohttp import web
-import json
 import main
 import tools
-import os
+
 
 async def handle(request):
-    filelist = [f for f in os.listdir('./') if f.endswith(".csv")]
-    for f in filelist:
-        os.remove(os.path.join('./', f))
+    tools.removeCSVs()
     startDate = datetime.datetime.strptime(request.rel_url.query['startDate'],"%Y-%m-%d %H:%M:%S")
     today = datetime.datetime.now()
 
